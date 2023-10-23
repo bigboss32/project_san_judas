@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  postgis:
+    image: postgres
+    environment:
+      POSTGRES_DB: 'san_judas'
+      POSTGRES_USER: 'san_judas'
+      POSTGRES_PASSWORD: 'san_judas'
+
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile.txt
+    environment:
+        -   DJANGO_DEBUG=True
+        -   SECRET_KEY=development
+        -   ALLOWED_HOSTS=*
+        -   DATABASE_URL=postgis://san_judas:san_judas@postgis:5432/san_judas
+        -   DJANGO_SUPERUSER_USERNAME=admin
+        -   ACCESS_TOKEN_LIFETIME=5
+        -   REFRESH_TOKEN_LIFETIME=1
+        -   DJANGO_SUPERUSER_EMAIL=san_judas@san_judas.co
+        -   DJANGO_SUPERUSER_PASSWORD=admin
+        -   RUN_SERVER=true
+    command: bash -c "python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/code
+    depends_on:
+      - postgis

@@ -1,0 +1,10 @@
+# Usa la imagen base de Python
+FROM python:3
+
+ENV PYTHONUNBUFFERED 1
+WORKDIR /code
+COPY requirements.txt /code/
+RUN  pip install -r requirements.txt
+COPY . /code/
+RUN echo "source /code/env/Scripts/activate" >> /root/.bashrc
+CMD ["bash"]

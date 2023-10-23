@@ -1,0 +1,13 @@
+{
+  "name": "Django Project",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "django",
+  "workspaceFolder": "/code",
+  "extensions": [
+	"PKief.material-icon-theme",
+	"ms-python.vscode-pylance",
+	"ms-python.python"
+],
+
+
+}
