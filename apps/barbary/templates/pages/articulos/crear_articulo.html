@@ -1,0 +1,78 @@
+{% extends 'layouts/navbar.html' %}
+
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Content Wrapper. Contains page content -->
+
+<div class="wrapper">
+    <div class="content-wrapper">
+        <div class="row justify-content-center">
+            <div class="col-md-8 mt-5">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Formulario</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            <!-- Campos de Articulo -->
+                            <div class="form-group">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="categoria">Categoría:</label>
+                                <select class="form-control" id="categoria" name="categoria" required>
+                                    <option value="" selected>Nueva Categoría</option>
+                                    {% for categoria in categorias %}
+                                        <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="precio_venta">Precio de Venta:</label>
+                                <input type="number" class="form-control" id="precio_venta" name="precio_venta" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="codigo">Código:</label>
+                                <input type="number" class="form-control" id="codigo" name="codigo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="descripcion">Descripción:</label>
+                                <textarea class="form-control" id="descripcion" name="descripcion" required></textarea>
+                            </div>
+                            <!-- Campos de Categoria (si es nueva) -->
+                            <div id="categoria-nueva" style="display: none;">
+                                <div class="form-group">
+                                    <label for="nombre_categoria">Nombre de Categoría:</label>
+                                    <input type="text" class="form-control" id="nombre_categoria" name="nombre_categoria">
+                                </div>
+                                <div class="form-group">
+                                    <label for="descripcion_categoria">Descripción de Categoría:</label>
+                                    <textarea class="form-control" id="descripcion_categoria" name="descripcion_categoria"></textarea>
+                                </div>
+                            </div>
+                            <!-- Fin de campos de Categoria (si es nueva) -->
+                            <button type="button" class="btn btn-primary" id="btn-nueva-categoria">Nueva Categoría</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#btn-nueva-categoria').click(function() {
+            $('#categoria-nueva').toggle();
+        });
+    });
+</script>
+
+
+
+
+<!-- /.content-wrapper -->
+{% endblock %}

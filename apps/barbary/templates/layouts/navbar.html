@@ -1,0 +1,243 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Dashboard 3</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+
+  <!-- IonIcons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static '/css/adminlte.min.css' %}">
+</head>
+<!--
+`body` tag options:
+
+  Apply one or more of the following classes to to the body tag
+  to get the desired effect
+
+  * sidebar-collapse
+  * sidebar-mini
+-->
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="home" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link">Contact</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="cerrar_sesion" class="nav-link">Cerrar sesión</a>
+        </li>
+
+        {% endif %}
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+            <i class="fas fa-expand-arrows-alt"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      <a href="index3.html" class="brand-link">
+
+        <span class="brand-text font-weight-light">AdminLTE 3</span>
+      </a>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+
+          <div class="info">
+            <a href="#" class="d-block">{{ user.username }} {{ user.last_name }}</a>
+          </div>
+        </div>
+
+        <!-- SidebarSearch Form -->
+
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+
+            <li class="nav-item">
+              <a href="pages/widgets.html" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  Widgets
+                  <span class="right badge badge-danger">New</span>
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                  Compradores
+                  <i class="fas fa-angle-left right"></i>
+
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="crear_comprador" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Crear Comprador</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="crear_comprador" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Listar Compradores</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                  Articulos
+                  <i class="fas fa-angle-left right"></i>
+
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="crear_articulo" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Crear Articulo</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="crear_articulo" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Crear categoria</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="crear_articulo" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>listar articulos</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                  Ventas
+                  <i class="fas fa-angle-left right"></i>
+
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="crear_venta" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>crear ventas</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="crear_venta" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Listar ventas</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="crear_venta" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Devoluviones ventas</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+
+      </div>
+      <!-- /.sidebar -->
+
+    </aside>
+    {% block content %}
+    {% endblock %}
+    <!-- Content Wrapper. Contains page content -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+
+
+  </div>
+
+
+  <!-- jQuery -->
+  <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+  <!-- Bootstrap 4 -->
+  <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <!-- Select2 -->
+  <script src="{% static 'plugins/select2/js/select2.full.min.js' %}"></script>
+  <!-- Bootstrap4 Duallistbox -->
+  <script src="{% static 'plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js' %}"></script>
+  <!-- InputMask -->
+  <script src="{% static 'plugins/moment/moment.min.js' %}"></script>
+  <script src="{% static 'plugins/inputmask/jquery.inputmask.min.js' %}"></script>
+  <!-- date-range-picker -->
+  <script src="{% static 'plugins/daterangepicker/daterangepicker.js' %}"></script>
+  <!-- bootstrap color picker -->
+  <script src="{% static 'plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js' %}"></script>
+  <!-- Tempusdominus Bootstrap 4 -->
+  <script src="{% static 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+  <!-- Bootstrap Switch -->
+  <script src="{% static 'plugins/bootstrap-switch/js/bootstrap-switch.min.js' %}"></script>
+  <!-- BS-Stepper -->
+  <script src="{% static 'plugins/bs-stepper/js/bs-stepper.min.js' %}"></script>
+  <!-- dropzonejs -->
+  <script src="{% static 'plugins/dropzone/min/dropzone.min.js' %}"></script>
+  <!-- AdminLTE App -->
+  <script src="{% static 'js/adminlte.min.js' %}"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="{% static 'js/demo.js' %}"></script>
+  <!-- Page specific script -->
+
+
+
+
+
+
+</body>
+
+</html>
